@@ -32,6 +32,8 @@ def calculate_amino_acid_masses(peptide_sequence, scale, resin_loading, mode):
         "y": 417.5,
         "V": 117.15,
         "Z": 101.07, #Azidoacetic acid
+        "u": 446.95,
+        "O": 385.42
     }
     Mw_HCTU = 413.69 #g/mol
     Mw_HBTU = 379.247 #g/mol
@@ -121,7 +123,7 @@ def display_amino_acid_weights(amino_acid_weights):
     comments = ["Fmoc-Ala", "Fmoc-Arg(Pbf)", "Fmoc-Asn", "Fmoc-Asp(OtBu)", "Fmoc-Cys(Trt)", "Fmoc-Cysteic", "Fmoc-Glu(OtBu)",
                 "Fmoc-Gln", "Fmoc-Gly", "Fmoc-His(Trt)", "Fmoc-Ile", "Fmoc-Leu", "Fmoc-Lys(Boc)", "Fmoc-Met", "Fmoc-Phe", "Fmoc-Pro",
                 "Fmoc-Ser(tBu)", "Fmoc-Thr(tBu)", "Fmoc-Trp(Boc)", "Fmoc-Tyr(OtBu)", "Fmoc-Tyr(OMe)",
-                  "Fmoc-Val", "Azido acetic-OH", "Picolyl azide-OH", "Fmoc-Lys(Me3+Cl-)"]
+                  "Fmoc-Val", "Azido acetic-OH", "Picolyl azide-OH", "Fmoc-Lys(Me3+Cl-)", "Fmoc-O2Oc-OH"]
     
     df = pd.DataFrame({"Amino Acid": amino_acids, "Molecular weight": weights, "Molecule": comments})
     
@@ -156,6 +158,7 @@ if __name__ == "__main__":
         "Z": 101.07, #Azidoacetic acid
         "z":178.15, #Picolyl azide
         "u":446.95, 
+        "O":385.42, 
 
     }
     st.title("Amino Acid legend")
