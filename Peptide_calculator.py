@@ -32,8 +32,8 @@ def calculate_amino_acid_masses(peptide_sequence, scale, resin_loading, mode):
         "y": 417.5, #Fmoc-Tyr(OMe)
         "V": 117.15, #Fmoc-Val
         "Z": 101.07, #Azidoacetic acid
-        "j": 178.15, #Picolyl azide
-        "u":446.95, 
+        "J": 178.15, #Picolyl azide
+        "U":446.95, 
         "O":385.42, 
 
     }
@@ -62,8 +62,8 @@ def calculate_amino_acid_masses(peptide_sequence, scale, resin_loading, mode):
         "y": "Fmoc-Tyr(OMe)",
         "V": "Fmoc-Val",
         "Z": "Azido acetic-OH",
-        "j": "Picolyl azide-OH",
-        "u": "Fmoc-Lys(Me3+Cl-)",
+        "J": "Picolyl azide-OH",
+        "U": "Fmoc-Lys(Me3+Cl-)",
         "O": "Fmoc-O2Oc-OH",
     }
     
@@ -189,8 +189,8 @@ if __name__ == "__main__":
         "y": 417.5, #Fmoc-Tyr(OMe)
         "V": 117.15, #Fmoc-Val
         "Z": 101.07, #Azidoacetic acid
-        "j": 178.15, #Picolyl azide
-        "u":446.95, 
+        "J": 178.15, #Picolyl azide
+        "U":446.95, 
         "O":385.42, 
 
     }
