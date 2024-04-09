@@ -32,8 +32,8 @@ def calculate_amino_acid_masses(peptide_sequence, scale, resin_loading, mode):
         "y": 417.5, #Fmoc-Tyr(OMe)
         "V": 117.15, #Fmoc-Val
         "Z": 101.07, #Azidoacetic acid
-        "J": 178.15, #Picolyl azide
-        "U":446.95, 
+        "j": 178.15, #Picolyl azide
+        "u":446.95, 
         "O":385.42, 
 
     }
@@ -62,8 +62,8 @@ def calculate_amino_acid_masses(peptide_sequence, scale, resin_loading, mode):
         "y": "Fmoc-Tyr(OMe)",
         "V": "Fmoc-Val",
         "Z": "Azido acetic-OH",
-        "J": "Picolyl azide-OH",
-        "U": "Fmoc-Lys(Me3+Cl-)",
+        "j": "Picolyl azide-OH",
+        "u": "Fmoc-Lys(Me3+Cl-)",
         "O": "Fmoc-O2Oc-OH",
     }
     
@@ -113,11 +113,11 @@ def calculate_amino_acid_masses(peptide_sequence, scale, resin_loading, mode):
         for amino_acid in amino_acid_masses:
             amino_acid_masses[amino_acid] /= amino_acid_counts[amino_acid]
             
-        HBTU_pc = Mw_HBTU * 4 * scale
+        HBTU_pc = Mw_HBTU * 3 * scale
         HBTU_mg = (peptide_length+1)* HBTU_pc
         amino_acid_masses["HBTU_per_coupling"] =  HBTU_pc
 
-        HOBt_pc = Mw_HOBt * 4 * scale
+        HOBt_pc = Mw_HOBt * 3 * scale
         HOBt_mg = (peptide_length+1)* HOBt_pc
         amino_acid_masses["HOBt_per_coupling"] =  HOBt_pc
 
@@ -189,8 +189,8 @@ if __name__ == "__main__":
         "y": 417.5, #Fmoc-Tyr(OMe)
         "V": 117.15, #Fmoc-Val
         "Z": 101.07, #Azidoacetic acid
-        "J": 178.15, #Picolyl azide
-        "U":446.95, 
+        "j": 178.15, #Picolyl azide
+        "u":446.95, 
         "O":385.42, 
 
     }
