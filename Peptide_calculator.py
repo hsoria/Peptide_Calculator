@@ -35,6 +35,7 @@ def calculate_amino_acid_masses(peptide_sequence, scale, resin_loading, mode):
         "J": 178.15, #Picolyl azide
         "U":446.95, 
         "O":385.42, 
+        "o": 381.19, #8-amino-octanoic acid
 
     }
 
@@ -65,6 +66,7 @@ def calculate_amino_acid_masses(peptide_sequence, scale, resin_loading, mode):
         "J": "Picolyl azide-OH",
         "U": "Fmoc-Lys(Me3+Cl-)",
         "O": "Fmoc-O2Oc-OH",
+        "o": "Fmoc-Aoa-OH"
     }
     
     Mw_HCTU = 413.69 #g/mol
@@ -192,6 +194,7 @@ if __name__ == "__main__":
         "J": 178.15, #Picolyl azide
         "U":446.95, 
         "O":385.42, 
+        "o":381.19
 
     }
     st.title("Amino Acid legend")
