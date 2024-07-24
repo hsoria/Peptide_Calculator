@@ -35,7 +35,7 @@ def calculate_amino_acid_masses(peptide_sequence, scale, resin_loading, mode):
         "J": 178.15, #Picolyl azide
         "U":446.95, 
         "O":385.42, 
-        "o": 381.19, #8-amino-octanoic acid
+        "o": 381.19 #8-amino-octanoic acid
 
     }
 
@@ -158,7 +158,7 @@ def display_amino_acid_weights(amino_acid_weights):
     comments = ["Fmoc-Ala", "Fmoc-Arg(Pbf)", "Fmoc-Asn", "Fmoc-Asp(OtBu)", "Fmoc-Cys(Trt)", "Fmoc-Cysteic", "Fmoc-Glu(OtBu)",
                 "Fmoc-Gln", "Fmoc-Gly", "Fmoc-His(Trt)", "Fmoc-Ile", "Fmoc-Leu", "Fmoc-Lys(Boc)", "Fmoc-Met", "Fmoc-Phe", "Fmoc-Pro",
                 "Fmoc-Ser(tBu)", "Fmoc-Thr(tBu)", "Fmoc-Trp(Boc)", "Fmoc-Tyr(OtBu)", "Fmoc-Tyr(OMe)",
-                  "Fmoc-Val", "Azido acetic-OH", "Picolyl azide-OH", "Fmoc-Lys(Me3+Cl-)", "Fmoc-O2Oc-OH"]
+                  "Fmoc-Val", "Azido acetic-OH", "Picolyl azide-OH", "Fmoc-Lys(Me3+Cl-)", "Fmoc-O2Oc-OH", "Fmoc-Aoa-OH"]
     
     df = pd.DataFrame({"Amino Acid": amino_acids, "Molecular weight": weights, "Molecule": comments})
     
