@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-def calculate_amino_acid_masses(peptide_sequence, scale, resin_loading, mode, amino_acid_weights, amino_acid_names):
+def calculate_amino_acid_masses(peptide_sequence, scale, resin_loading, mode, amino_acid_weights, amino_acid_comments):
     Mw_HCTU = 413.69  # g/mol
     Mw_HBTU = 379.247  # g/mol
     Mw_HOBt = 135.12
@@ -31,7 +31,7 @@ def calculate_amino_acid_masses(peptide_sequence, scale, resin_loading, mode, am
 
         df = pd.DataFrame({"Quantities": amino_acid_masses})
         df = round(df, 0)
-        df.rename(index=amino_acid_names, inplace=True)
+        df['Comments'] = df.index.map(amino_acid_comments)
 
     else:
         amino_acid_masses = {}
@@ -59,7 +59,7 @@ def calculate_amino_acid_masses(peptide_sequence, scale, resin_loading, mode, am
         amino_acid_masses["DIEA_per_coupling_µL"] = (scale * 6 * Mw_DIEA / density_DIEA)
         df = pd.DataFrame({"Quantities": amino_acid_masses})
         df = round(df, 0)
-        df.rename(index=amino_acid_names, inplace=True)
+        df['Comments'] = df.index.map(amino_acid_comments)
 
     return df
 
@@ -74,27 +74,27 @@ def streamlit_main():
 
     add_new_amino_acid = st.selectbox("Do you want to add a new amino acid?", ["No", "Yes"])
 
-    new_aa, new_aa_weight, new_aa_name = None, None, None
+    new_aa, new_aa_weight, new_aa_comment = None, None, None
 
     if add_new_amino_acid == "Yes":
         new_aa = st.text_input("Enter new amino acid one-letter code")
         new_aa_weight = st.number_input("Enter new amino acid molecular weight", format="%.2f")
-        new_aa_name = st.text_input("Enter new amino acid name")
+        new_aa_comment = st.text_input("Enter new amino acid comment")
 
         # Validation and adding the new amino acid
-        if new_aa and len(new_aa) == 1 and new_aa_weight > 0 and new_aa_name:
+        if new_aa and len(new_aa) == 1 and new_aa_weight > 0 and new_aa_comment:
             st.success("New amino acid added successfully.")
         else:
-            st.error("Please enter a valid one-letter code, positive molecular weight, and name.")
+            st.error("Please enter a valid one-letter code, positive molecular weight, and comment.")
 
-    return sequence, scale, resin_loading, mode, new_aa, new_aa_weight, new_aa_name
+    return sequence, scale, resin_loading, mode, new_aa, new_aa_weight, new_aa_comment
 
-def display_amino_acid_weights(amino_acid_weights, amino_acid_names):
+def display_amino_acid_weights(amino_acid_weights, amino_acid_comments):
     amino_acids = list(amino_acid_weights.keys())
     weights = list(amino_acid_weights.values())
-    names = [amino_acid_names[aa] for aa in amino_acid_weights]
+    comments = [amino_acid_comments[aa] for aa in amino_acid_weights]
 
-    df = pd.DataFrame({"Amino Acid": amino_acids, "Name": names, "Molecular weight": weights})
+    df = pd.DataFrame({"Amino Acid": amino_acids, "Comments": comments, "Molecular weight": weights})
 
     centered_html = f"<div style='width: 100%; text-align: center;'>{df.to_html(index=False)}</div>"
     st.markdown(centered_html, unsafe_allow_html=True)
@@ -108,7 +108,7 @@ if __name__ == "__main__":
         "U": 446.95, "O": 385.42, "o": 381.19
     }
 
-    amino_acid_names = {
+    amino_acid_comments = {
         "A": "Alanine", "R": "Arginine", "N": "Asparagine", "D": "Aspartic acid", 
         "C": "Cysteine", "c": "Cysteic acid", "E": "Glutamic acid", "Q": "Glutamine", 
         "G": "Glycine", "H": "Histidine", "I": "Isoleucine", "L": "Leucine", 
@@ -118,14 +118,14 @@ if __name__ == "__main__":
         "U": "Trimethyllysine", "O": "Ornithine", "o": "Aminocyclobutanecarboxylic acid"
     }
 
-    sequence, scale, resin_loading, mode, new_aa, new_aa_weight, new_aa_name = streamlit_main()
+    sequence, scale, resin_loading, mode, new_aa, new_aa_weight, new_aa_comment = streamlit_main()
 
-    if new_aa and len(new_aa) == 1 and new_aa_weight > 0 and new_aa_name:
+    if new_aa and len(new_aa) == 1 and new_aa_weight > 0 and new_aa_comment:
         amino_acid_weights[new_aa] = new_aa_weight
-        amino_acid_names[new_aa] = new_aa_name
+        amino_acid_comments[new_aa] = new_aa_comment
 
-    df = calculate_amino_acid_masses(sequence, scale, resin_loading, mode, amino_acid_weights, amino_acid_names)
+    df = calculate_amino_acid_masses(sequence, scale, resin_loading, mode, amino_acid_weights, amino_acid_comments)
     st.write(df)
 
     st.title("Amino Acid Legend")
-    display_amino_acid_weights(amino_acid_weights, amino_acid_names)
+    display_amino_acid_weights(amino_acid_weights, amino_acid_comments)
