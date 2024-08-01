@@ -109,13 +109,13 @@ if __name__ == "__main__":
     }
 
     amino_acid_comments = {
-        "A": "Alanine", "R": "Arginine", "N": "Asparagine", "D": "Aspartic acid", 
-        "C": "Cysteine", "c": "Cysteic acid", "E": "Glutamic acid", "Q": "Glutamine", 
-        "G": "Glycine", "H": "Histidine", "I": "Isoleucine", "L": "Leucine", 
-        "K": "Lysine", "M": "Methionine", "F": "Phenylalanine", "P": "Proline", 
-        "S": "Serine", "T": "Threonine", "W": "Tryptophan", "Y": "Tyrosine", 
-        "y": "Methyl tyrosine", "V": "Valine", "Z": "Azido acetic acid", "J": "Picolyl azide", 
-        "U": "Trimethyllysine", "O": "Ornithine", "o": "Aminocyclobutanecarboxylic acid"
+        "A": "Fmoc-Ala", "R": "Fmoc-Arg(Pbf)", "N": "Fmoc-Asn", "D": "Fmoc-Asp(OtBu)", 
+        "C": "Fmoc-Cys(Trt)", "c": "Fmoc-Cysteic", "E": "Fmoc-Glu(OtBu)", "Q": "Fmoc-Gln", 
+        "G": "Fmoc-Gly", "H": "Fmoc-His(Trt)", "I": "Fmoc-Ile", "L": "Fmoc-Leu", 
+        "K": "Fmoc-Lys(Boc)", "M": "Fmoc-Met", "F": "Fmoc-Phe", "P": "Fmoc-Pro", 
+        "S": "Fmoc-Ser(tBu)", "T": "Fmoc-Thr(tBu)", "W": "Fmoc-Trp(Boc)", "Y": "Fmoc-Tyr(OtBu)", 
+        "y": "Fmoc-Tyr(OMe)", "V": "Fmoc-Val", "Z": "Azido acetic-OH", "J": "Picolyl azide-OH", 
+        "U": "Fmoc-Lys(Me3+Cl-)", "O": "Fmoc-O2Oc-OH", "o": "Fmoc-Aoa-OH"
     }
 
     sequence, scale, resin_loading, mode, new_aa, new_aa_weight, new_aa_comment = streamlit_main()
