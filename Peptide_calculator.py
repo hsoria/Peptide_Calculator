@@ -94,7 +94,7 @@ def display_amino_acid_weights(amino_acid_weights, amino_acid_comments):
     weights = list(amino_acid_weights.values())
     comments = [amino_acid_comments[aa] for aa in amino_acid_weights]
 
-    df = pd.DataFrame({"Amino Acid": amino_acids, "Comments": comments, "Molecular weight": weights})
+    df = pd.DataFrame({"Amino Acid": amino_acids, "Molecular weight": weights, "Comments": comments })
 
     centered_html = f"<div style='width: 100%; text-align: center;'>{df.to_html(index=False)}</div>"
     st.markdown(centered_html, unsafe_allow_html=True)
